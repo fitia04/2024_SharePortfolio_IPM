@@ -16,17 +16,50 @@
  */
 package tp04.metier;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-
-/**
- *
- * @author 33761
- */
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.jupiter.api.Assertions;
-public class PortefeuilleTest {
+
+public class PortefeuilleTest { 
+   
+    @Test
+    public void testAcheter() {
+    
+        //Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple actionSimple = new ActionSimple("Action1");
+        int quantiteInitiale = 10;
+        int quantiteAchat = 50;
+        
+        //Action
+        portefeuille.acheter(actionSimple, quantiteInitiale);
+        portefeuille.acheter(actionSimple, quantiteAchat);
+        
+        //Assert
+       Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+       Assertions.assertTrue(mapLignes.containsKey(actionSimple));
+    }
+    
+    @Test
+    public void testQuantiteAchete() {
+      //Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple actionSimple = new ActionSimple("Action1");
+        int quantiteInitiale = 10;
+        int quantiteAchat = 50;
+        
+        //Action
+        portefeuille.acheter(actionSimple, quantiteInitiale);
+        portefeuille.acheter(actionSimple, quantiteAchat);
+        
+        //Assert
+        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(actionSimple);
+        Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
+    }
+  
     @Test
     protected void testVendre() {
         //Arrange
@@ -36,7 +69,6 @@ public class PortefeuilleTest {
         
         portefeuille.acheter(action, quantiteInitiale);
         //Action
-        
         int quantite = 50;
         portefeuille.vendre(action, quantite);
         
@@ -47,4 +79,27 @@ public class PortefeuilleTest {
         Assertions.assertEquals(quantiteInitiale - quantite, lignePortefeuille.getQte());
         
     }
+    
+    
+    @Test
+    protected void testDeleteSuccess() {
+        // Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        String libelle = "Action1";
+        String lib = "Action2";
+        ActionSimple AS1 = new ActionSimple(libelle);
+        ActionComposee AC1 = new ActionComposee(lib);
+        int quantiteInitiale = 100;
+        portefeuille.acheter(AC1, quantiteInitiale);
+        portefeuille.acheter(AS1, quantiteInitiale);
+
+        // Action
+        portefeuille.delete(AC1);
+
+        // Assert
+        Assertions.assertFalse(portefeuille.getMapLignes().containsKey(AC1), "Test echec");
+        Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
+       
+    }
+
 }

@@ -13,8 +13,9 @@ import java.util.Map;
  * @author somebody
  */
 public class Portefeuille {
-
+    // dico avec clé : Action, valeur : action,qté
     Map<Action, LignePortefeuille> mapLignes;
+   
 
     public class LignePortefeuille {
 
@@ -33,8 +34,9 @@ public class Portefeuille {
         public Action getAction() {
             return this.action;
         }
-
-        public LignePortefeuille(Action action, int qte) {
+        
+        // Constructeur
+        public LignePortefeuille(Action action, int qte) {  // Quantité d'une action
             this.action = action;
             this.qte = qte;
         }
@@ -47,6 +49,14 @@ public class Portefeuille {
     public Portefeuille() {
         this.mapLignes = new HashMap();
     }
+
+    public Map<Action, LignePortefeuille> getMapLignes() {
+        return mapLignes;
+    }
+    
+    
+    
+    
 
     public void acheter(Action a, int q) {
         if (this.mapLignes.containsKey(a) == false) {
@@ -65,6 +75,12 @@ public class Portefeuille {
             }
         }
     }
+    
+    public void delete(Action a) {
+        if (this.mapLignes.containsKey(a) == true) {
+            this.mapLignes.remove(a);
+        }
+    }
 
     public String toString() {
         return this.mapLignes.toString();
@@ -78,3 +94,4 @@ public class Portefeuille {
         return total;
     }
 }
+   
