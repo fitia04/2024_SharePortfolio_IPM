@@ -38,8 +38,8 @@ public class PortefeuilleTest {
         portefeuille.acheter(actionSimple, quantiteAchat);
         
         //Assert
-        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
-        Assertions.assertTrue(mapLignes.containsKey(actionSimple));
+       Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+       Assertions.assertTrue(mapLignes.containsKey(actionSimple));
     }
     
     @Test
