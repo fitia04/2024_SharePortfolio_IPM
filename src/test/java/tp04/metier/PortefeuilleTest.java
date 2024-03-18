@@ -100,5 +100,22 @@ public class PortefeuilleTest {
         Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
        
     }
+@Test
+protected void testResearch(){
+    //Arrange 
+        Portefeuille portefeuille = new Portefeuille();
+        String libelle = "Action1";
+        String lib = "Action2";
+        ActionSimple AS1 = new ActionSimple(libelle);
+        ActionComposee AC1 = new ActionComposee(lib);
+        int quantiteInitiale = 100;
+        portefeuille.acheter(AC1, quantiteInitiale);
+        portefeuille.acheter(AS1, quantiteInitiale);
 
+    //Action 
+    portefeuille.rechercherActionParNom("Action1"); 
+    //Assert 
+   // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
+
+}
 }

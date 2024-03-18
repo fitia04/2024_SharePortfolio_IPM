@@ -7,6 +7,8 @@ package tp04.metier;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -46,6 +48,7 @@ public class Portefeuille {
         }
     }
 
+    //constructeur
     public Portefeuille() {
         this.mapLignes = new HashMap();
     }
@@ -53,7 +56,7 @@ public class Portefeuille {
     public Map<Action, LignePortefeuille> getMapLignes() {
         return mapLignes;
     }
-    
+  
     
     
     
@@ -92,6 +95,22 @@ public class Portefeuille {
             total = total + (lp.getQte() * lp.getAction().valeur(j));
         }
         return total;
+    }
+    
+
+    /**
+     * methode qui recherche une action dans le portefeuille 
+     * @param action
+     * @return ArrayList<Action>
+     */
+    public Action rechercherActionParNom(String nomAction) {
+        for (Map.Entry<Action, LignePortefeuille> entry : mapLignes.entrySet()) {
+            Action action = entry.getKey();
+            if (action.getLibelle().equals(nomAction)) {   
+                return action;
+            }
+        }
+        return null;
     }
 }
    
