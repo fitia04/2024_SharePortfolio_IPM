@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 package tp04.metier;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  *
@@ -74,4 +78,27 @@ public class PortefeuilleTest {
         
         //Assert
     }
+    
+    
+    @Test
+    protected void testDeleteSuccess() {
+        // Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        String libelle = "Action1";
+        String lib = "Action2";
+        ActionSimple AS1 = new ActionSimple(libelle);
+        ActionComposee AC1 = new ActionComposee(lib);
+        int quantiteInitiale = 100;
+        portefeuille.acheter(AC1, quantiteInitiale);
+        portefeuille.acheter(AS1, quantiteInitiale);
+
+        // Action
+        portefeuille.delete(AC1);
+
+        // Assert
+        Assertions.assertFalse(portefeuille.getMapLignes().containsKey(AC1), "Test echec");
+        Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
+       
+    }
+
 }

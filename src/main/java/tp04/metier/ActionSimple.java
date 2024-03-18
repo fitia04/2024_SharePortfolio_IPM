@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package tp04.metier;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +23,8 @@ public class ActionSimple extends Action {
         // init spécifique
         this.mapCours = new HashMap();
     }
+    
+
 
     // enrg possible si pas de cours pour ce jour
     public void enrgCours(Jour j, float v) {
