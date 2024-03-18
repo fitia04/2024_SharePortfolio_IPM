@@ -103,5 +103,20 @@ public class Portefeuille {
         }
         return total;
     }
+    
+        /**
+     * methode qui recherche une action dans le portefeuille 
+     * @param action
+     * @return ArrayList<Action>
+     */
+    public Action rechercherActionParNom(String nomAction) {
+        for (Map.Entry<Action, Portefeuille.LignePortefeuille> entry : mapLignes.entrySet()) {
+            Action action = entry.getKey();
+            if (action.getLibelle().equals(nomAction)) {   
+                return action;
+            }
+        }
+        return null;
+    }
 }
    
