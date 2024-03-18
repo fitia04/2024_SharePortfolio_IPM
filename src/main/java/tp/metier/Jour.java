@@ -16,35 +16,52 @@
 package tp.metier;
 
 /**
- *
- * @author somebody
+ * Represents a day in a financial context.
+ * <p>
+ * This class represents a specific day in a financial context, defined by its year and day number.</p>
+ * <p>
+ * Example of usage: <code>Jour jour = new Jour(2024, 3);</code></p>
+ * 
+ * @author David Navarre
  */
 public class Jour {
 
+    /**
+     * The year of this day.
+     */
     private int annee;
+    /**
+     * The day number of this day.
+     */
     private int noJour;
 
     /**
-     * Get the value of annee
-     *
-     * @return the value of annee
+     * Constructs a day with the given year and day number.
+     * 
+     * @param annee The year of the day.
+     * @param noJour The day number of the day.
+     */
+    public Jour(int annee, int noJour) {
+        this.annee = annee;
+        this.noJour = noJour;
+    }
+
+    /**
+     * Gets the year of this day.
+     * 
+     * @return The year of this day.
      */
     public int getAnnee() {
         return annee;
     }
 
     /**
-     * Get the value of noJour
-     *
-     * @return the value of noJour
+     * Gets the day number of this day.
+     * 
+     * @return The day number of this day.
      */
     public int getNoJour() {
         return noJour;
-    }
-
-    public Jour(int annee, int noJour) {
-        this.annee = annee;
-        this.noJour = noJour;
     }
 
     @Override
@@ -77,5 +94,4 @@ public class Jour {
     public String toString() {
         return "Jour{" + "annee=" + annee + ", noJour=" + noJour + '}';
     }
-
 }

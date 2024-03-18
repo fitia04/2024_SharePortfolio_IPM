@@ -14,41 +14,63 @@
  * limitations under the License.
  */
 package tp.metier;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- * @author somebody
+ * Represents a simple action in a financial context.
+ * <p>
+ * This class extends the abstract class Action to represent
+ * a simple action, which is associated with daily values.</p>
+ * <p>
+ * Example of usage: <code> ActionSimple action = new ActionSimple("Libelle");</code></p>
+ * @author David Navarre
  */
 public class ActionSimple extends Action {
 
-    // attribut lien
+    /**
+     * Map associating days with their respective course values for this simple action.
+     */
     private Map<Jour, Cours> mapCours;
 
-    // constructeur
+    /**
+     * Constructs a simple action with the given label.
+     * 
+     * @param libelle The label representing this simple action.
+     */
     public ActionSimple(String libelle) {
-        // Action simple initialisée comme 1 action
         super(libelle);
-        // init spécifique
         this.mapCours = new HashMap();
     }
     
-
-
-    // enrg possible si pas de cours pour ce jour
+    /**
+     * Associates a course value with the given day for this simple action.
+     * 
+     * @param j The day for which to associate the course value.
+     * @param v The course value for the given day.
+     */
     public void enrgCours(Jour j, float v) {
-        if (this.mapCours.containsKey(j) == false) {
+        if (!this.mapCours.containsKey(j)) {
             this.mapCours.put(j, new Cours(j, v));
         }
     }
 
+    /**
+     * Computes the value of the simple action for the given day.
+     * <p>
+     * This method retrieves the course value for the given day, if available, and returns
+     * it. If there is no course value available for the day, it returns 0.</p>
+     * 
+     * @param j The day for which to compute the value.
+     * @return The value of the simple action for the given day.
+     */
     @Override
     public float valeur(Jour j) {
-        if (this.mapCours.containsKey(j) == true) {
+        if (this.mapCours.containsKey(j)) {
             return this.mapCours.get(j).getValeur();
         } else {
-            return 0; // definition d'une constante possible
+            return 0; // Alternatively, could throw an exception or return a constant value.
         }
     }
 }

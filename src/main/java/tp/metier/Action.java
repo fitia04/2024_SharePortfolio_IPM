@@ -18,26 +18,49 @@ package tp.metier;
 import java.util.Objects;
 
 /**
- *
- * @author somebody
+ * Represents an abstract action .
+ * <p>
+ * This abstract class defines a basic structure for financial actions. Concrete subclasses
+ * should implement the specific behavior related to a particular type of action.</p>
+ * <p>
+ * Example of usage: <code>Action action = new ConcreteAction("Libelle");</code></p>
+ * 
+ * @author David Navarre
  */
 public abstract class Action {
 
+    /**
+     * The label representing this action.
+     */
     private String libelle;
 
     /**
-     * Get the value of libelle
-     *
-     * @return the value of libelle
+     * Constructs an Action with the given label.
+     * 
+     * @param libelle The label representing this action.
+     */
+    public Action(String libelle) {
+        this.libelle = libelle;
+    }
+
+    /**
+     * Gets the label representing this action.
+     * 
+     * @return The label of this action.
      */
     public String getLibelle() {
         return libelle;
     }
 
-    public Action(String libelle) {
-        this.libelle = libelle;
-    }
-
+    /**
+     * Computes the value of this action for the given day.
+     * <p>
+     * This method should be implemented by concrete subclasses to define the specific
+     * behavior related to computing the value of the action for a particular day.</p>
+     * 
+     * @param j The day for which to compute the value.
+     * @return The value of this action for the given day.
+     */
     public abstract float valeur(Jour j);
 
     @Override
@@ -62,6 +85,7 @@ public abstract class Action {
         return true;
     }
 
+    @Override
     public String toString() {
         return this.getLibelle();
     }
