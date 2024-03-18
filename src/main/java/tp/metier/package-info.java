@@ -14,5 +14,8 @@
  * limitations under the License.
  */
 
-/* Ce package comporte toutes les classes métiers liés à un portefeuille*/
+/**
+ * Ce package contient les classes métier pour le projet SharePortfolio.
+ * Il inclut des classes telles que Action, Portefeuille, Jour, etc.
+ */
 package tp.metier;
