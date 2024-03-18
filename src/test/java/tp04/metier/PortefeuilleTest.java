@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2024 33761.
  *
@@ -21,11 +22,16 @@ import org.junit.jupiter.api.Assertions;
  *
  * @author 33761
  */
+import org.junit.jupiter.api.Test;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.jupiter.api.Assertions;
 public class PortefeuilleTest {
+    @Test
     protected void testVendre() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
-        ActionComposee action = new ActionComposee("Action1");
+        ActionSimple action = new ActionSimple("Action1");
         int quantiteInitiale = 100;
         
         portefeuille.acheter(action, quantiteInitiale);
@@ -35,5 +41,10 @@ public class PortefeuilleTest {
         portefeuille.vendre(action, quantite);
         
         //Assert
+        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        Assertions.assertTrue(mapLignes.containsKey(action));
+        Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(action);
+        Assertions.assertEquals(quantiteInitiale - quantite, lignePortefeuille.getQte());
+        
     }
 }
