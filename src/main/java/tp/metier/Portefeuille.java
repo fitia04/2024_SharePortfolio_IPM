@@ -1,14 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright 2024 David Navarre &lt;David.Navarre at irit.fr&gt;.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-package tp04.metier;
+package tp.metier;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -48,7 +56,6 @@ public class Portefeuille {
         }
     }
 
-    //constructeur
     public Portefeuille() {
         this.mapLignes = new HashMap();
     }
@@ -56,7 +63,7 @@ public class Portefeuille {
     public Map<Action, LignePortefeuille> getMapLignes() {
         return mapLignes;
     }
-  
+    
     
     
     
@@ -97,14 +104,13 @@ public class Portefeuille {
         return total;
     }
     
-
-    /**
+        /**
      * methode qui recherche une action dans le portefeuille 
      * @param action
      * @return ArrayList<Action>
      */
     public Action rechercherActionParNom(String nomAction) {
-        for (Map.Entry<Action, LignePortefeuille> entry : mapLignes.entrySet()) {
+        for (Map.Entry<Action, Portefeuille.LignePortefeuille> entry : mapLignes.entrySet()) {
             Action action = entry.getKey();
             if (action.getLibelle().equals(nomAction)) {   
                 return action;

@@ -13,19 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package tp04.metier;
+package tp.metier;
 
+import tp.metier.ActionSimple;
+import tp.metier.Action;
+import tp.metier.Portefeuille;
+import tp.metier.ActionComposee;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- *
- * @author 33761
- */
 public class PortefeuilleTest { 
    
     @Test
@@ -63,12 +62,12 @@ public class PortefeuilleTest {
         Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(actionSimple);
         Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
     }
-    
+  
     @Test
     protected void testVendre() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
-        ActionComposee action = new ActionComposee("Action1");
+        ActionSimple action = new ActionSimple("Action1");
         int quantiteInitiale = 100;
         
         portefeuille.acheter(action, quantiteInitiale);
@@ -77,6 +76,11 @@ public class PortefeuilleTest {
         portefeuille.vendre(action, quantite);
         
         //Assert
+        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        Assertions.assertTrue(mapLignes.containsKey(action));
+        Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(action);
+        Assertions.assertEquals(quantiteInitiale - quantite, lignePortefeuille.getQte());
+        
     }
     
     
@@ -100,22 +104,24 @@ public class PortefeuilleTest {
         Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
        
     }
-@Test
-protected void testResearch(){
-    //Arrange 
-        Portefeuille portefeuille = new Portefeuille();
-        String libelle = "Action1";
-        String lib = "Action2";
-        ActionSimple AS1 = new ActionSimple(libelle);
-        ActionComposee AC1 = new ActionComposee(lib);
-        int quantiteInitiale = 100;
-        portefeuille.acheter(AC1, quantiteInitiale);
-        portefeuille.acheter(AS1, quantiteInitiale);
+    
+    @Test
+    protected void testResearch(){
+        //Arrange 
+            Portefeuille portefeuille = new Portefeuille();
+            String libelle = "Action1";
+            String lib = "Action2";
+            ActionSimple AS1 = new ActionSimple(libelle);
+            ActionComposee AC1 = new ActionComposee(lib);
+            int quantiteInitiale = 100;
+            portefeuille.acheter(AC1, quantiteInitiale);
+            portefeuille.acheter(AS1, quantiteInitiale);
 
-    //Action 
-    portefeuille.rechercherActionParNom("Action1"); 
-    //Assert 
-   // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
+        //Action 
+        portefeuille.rechercherActionParNom("Action1"); 
+        //Assert 
+       // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
 
 }
+
 }
