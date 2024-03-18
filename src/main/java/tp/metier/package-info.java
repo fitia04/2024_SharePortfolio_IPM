@@ -15,4 +15,4 @@
  */
 
 /* Ce package comporte toutes les classes métiers liés à un portefeuille*/
-package tp04.metier;
+package tp.metier;
