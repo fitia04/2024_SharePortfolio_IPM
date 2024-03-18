@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 package tp04.metier;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
@@ -24,7 +26,45 @@ import java.util.Map;
  *
  * @author 33761
  */
-public class PortefeuilleTest {
+public class PortefeuilleTest { 
+   
+    @Test
+    public void testAcheter() {
+    
+        //Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple actionSimple = new ActionSimple("Action1");
+        int quantiteInitiale = 10;
+        int quantiteAchat = 50;
+        
+        //Action
+        portefeuille.acheter(actionSimple, quantiteInitiale);
+        portefeuille.acheter(actionSimple, quantiteAchat);
+        
+        //Assert
+       Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+       Assertions.assertTrue(mapLignes.containsKey(actionSimple));
+    }
+    
+    @Test
+    public void testQuantiteAchete() {
+      //Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple actionSimple = new ActionSimple("Action1");
+        int quantiteInitiale = 10;
+        int quantiteAchat = 50;
+        
+        //Action
+        portefeuille.acheter(actionSimple, quantiteInitiale);
+        portefeuille.acheter(actionSimple, quantiteAchat);
+        
+        //Assert
+        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(actionSimple);
+        Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
+    }
+    
+    @Test
     protected void testVendre() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
@@ -33,7 +73,6 @@ public class PortefeuilleTest {
         
         portefeuille.acheter(action, quantiteInitiale);
         //Action
-        
         int quantite = 50;
         portefeuille.vendre(action, quantite);
         
