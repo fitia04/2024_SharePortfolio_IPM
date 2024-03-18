@@ -51,12 +51,14 @@ public class PortefeuilleTest {
         ActionComposee AC1 = new ActionComposee(lib);
         int quantiteInitiale = 100;
         portefeuille.acheter(AC1, quantiteInitiale);
+        portefeuille.acheter(AS1, quantiteInitiale);
 
         // Action
         portefeuille.delete(AC1);
 
         // Assert
         Assertions.assertFalse(portefeuille.getMapLignes().containsKey(AC1), "Test echec");
+        Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
        
     }
 
