@@ -13,7 +13,7 @@ import java.util.Map;
  * @author somebody
  */
 public class Portefeuille {
-
+    // dico avec clé : Action, valeur : action,qté
     Map<Action, LignePortefeuille> mapLignes;
 
     private class LignePortefeuille {
@@ -34,7 +34,7 @@ public class Portefeuille {
             return this.action;
         }
 
-        public LignePortefeuille(Action action, int qte) {
+        public LignePortefeuille(Action action, int qte) {  // Quantité d'une action
             this.action = action;
             this.qte = qte;
         }
@@ -63,6 +63,12 @@ public class Portefeuille {
             } else if (this.mapLignes.get(a).getQte() == q) {
                 this.mapLignes.remove(a);
             }
+        }
+    }
+    
+    public void delete(Action a) {
+        if (this.mapLignes.containsKey(a) == true) {
+            this.mapLignes.remove(a);
         }
     }
 
