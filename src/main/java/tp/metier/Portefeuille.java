@@ -108,8 +108,7 @@ public class Portefeuille {
      * @param mdp 
      */
     public Portefeuille(String user, String mdp){
-        this.user = user; 
-        this.mdp =  mdp ;
+        createUser(user,mdp);
     }
 
     /**
@@ -222,8 +221,25 @@ public class Portefeuille {
             return false; 
         }
     }
-
-
+    
+    /**
+     * This function allows user to create their own id and password for their wallet
+     * @param id
+     * @param mdp
+     * @return true if user created, false if not
+     */
+    public boolean createUser(String id, String mdp) {
+      if (!identification.containsKey(id)) {
+          identification.put(id, mdp);
+          this.user = id;
+          this.mdp = mdp;
+          System.out.println("Le compte a été créé");
+          return true;
+      } else {
+          System.out.println("Cet UserName est déjà utilisé.");
+          return false;
+      }
+    }
 
             
  
