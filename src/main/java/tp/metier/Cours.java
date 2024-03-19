@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 David Navarre &lt;David.Navarre at irit.fr&gt;.
+ * Copyright 2024 Yasmine et Fiita;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ package tp.metier;
  * <p>
  * Example of usage: <code>Cours c = new Cours(j, 2.3F);</code></p>
  *
- * @author SomeFirstName SomeName &lt;SomeFirstName.SomeName at truc.fr&gt;
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
  * @see Action
  * @see Jour
  */

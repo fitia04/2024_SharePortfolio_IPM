@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 33761.
+ * Copyright 2024 Yasmine et Fiita;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,26 @@
  */
 package tp.metier;
 
-import tp.metier.ActionSimple;
-import tp.metier.Action;
-import tp.metier.Portefeuille;
-import tp.metier.ActionComposee;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe de test pour la classe {@link Portefeuille}.
+ * <p>
+ * Cette classe contient des tests unitaires pour les méthodes de la classe {@link Portefeuille}.</p>
+ * 
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
+ */
 public class PortefeuilleTest { 
    
+    /**
+     * Test de la méthode {@link Portefeuille#acheter(Action, int)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#acheter(Action, int)} ajoute correctement une action au portefeuille.</p>
+     */
     @Test
     public void testAcheter() {
-    
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
         ActionSimple actionSimple = new ActionSimple("Action1");
@@ -45,9 +50,15 @@ public class PortefeuilleTest {
        Assertions.assertTrue(mapLignes.containsKey(actionSimple));
     }
     
+    /**
+     * Test de la quantité après l'achat.
+     * <p>
+     * Ce test vérifie que la quantité d'une action dans le portefeuille est correcte
+     * après l'achat de quantités supplémentaires.</p>
+     */
     @Test
-    public void testQuantiteAchete() {
-      //Arrange
+    void testQuantiteAchete() {
+        //Arrange
         Portefeuille portefeuille = new Portefeuille();
         ActionSimple actionSimple = new ActionSimple("Action1");
         int quantiteInitiale = 10;
@@ -63,8 +74,13 @@ public class PortefeuilleTest {
         Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
     }
   
+    /**
+     * Test de la méthode {@link Portefeuille#vendre(Action, int)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille.</p>
+     */
     @Test
-    protected void testVendre() {
+    void testVendre() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
         ActionSimple action = new ActionSimple("Action1");
@@ -83,9 +99,13 @@ public class PortefeuilleTest {
         
     }
     
-    
+    /**
+     * Test de la suppression réussie d'une action du portefeuille.
+     * <p>
+     * Ce test vérifie qu'une action est supprimée avec succès du portefeuille.</p>
+     */
     @Test
-    protected void testDeleteSuccess() {
+    void testDeleteSuccess() {
         // Arrange
         Portefeuille portefeuille = new Portefeuille();
         String libelle = "Action1";
@@ -105,17 +125,22 @@ public class PortefeuilleTest {
        
     }
     
+    /**
+     * Test de recherche d'action.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#rechercherActionParNom(String)} recherche correctement une action dans le portefeuille.</p>
+     */
     @Test
-    protected void testResearch(){
+    void testResearch(){
         //Arrange 
-            Portefeuille portefeuille = new Portefeuille();
-            String libelle = "Action1";
-            String lib = "Action2";
-            ActionSimple AS1 = new ActionSimple(libelle);
-            ActionComposee AC1 = new ActionComposee(lib);
-            int quantiteInitiale = 100;
-            portefeuille.acheter(AC1, quantiteInitiale);
-            portefeuille.acheter(AS1, quantiteInitiale);
+        Portefeuille portefeuille = new Portefeuille();
+        String libelle = "Action1";
+        String lib = "Action2";
+        ActionSimple AS1 = new ActionSimple(libelle);
+        ActionComposee AC1 = new ActionComposee(lib);
+        int quantiteInitiale = 100;
+        portefeuille.acheter(AC1, quantiteInitiale);
+        portefeuille.acheter(AS1, quantiteInitiale);
 
         //Action 
         portefeuille.rechercherActionParNom("Action1"); 
