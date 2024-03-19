@@ -57,7 +57,7 @@ public class PortefeuilleTest {
      * après l'achat de quantités supplémentaires.</p>
      */
     @Test
-    public void testQuantiteAchete() {
+    void testQuantiteAchete() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
         ActionSimple actionSimple = new ActionSimple("Action1");
@@ -80,7 +80,7 @@ public class PortefeuilleTest {
      * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille.</p>
      */
     @Test
-    protected void testVendre() {
+    void testVendre() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
         ActionSimple action = new ActionSimple("Action1");
@@ -105,7 +105,7 @@ public class PortefeuilleTest {
      * Ce test vérifie qu'une action est supprimée avec succès du portefeuille.</p>
      */
     @Test
-    protected void testDeleteSuccess() {
+    void testDeleteSuccess() {
         // Arrange
         Portefeuille portefeuille = new Portefeuille();
         String libelle = "Action1";
@@ -131,7 +131,7 @@ public class PortefeuilleTest {
      * Ce test vérifie que la méthode {@link Portefeuille#rechercherActionParNom(String)} recherche correctement une action dans le portefeuille.</p>
      */
     @Test
-    protected void testResearch(){
+    void testResearch(){
         //Arrange 
         Portefeuille portefeuille = new Portefeuille();
         String libelle = "Action1";
