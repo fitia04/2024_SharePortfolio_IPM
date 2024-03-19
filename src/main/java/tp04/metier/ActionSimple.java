@@ -17,9 +17,9 @@ public class ActionSimple extends Action {
     private Map<Jour, Cours> mapCours;
 
     // constructeur
-    public ActionSimple(String libelle) {
+    public ActionSimple(String libelle, String annotation) {
         // Action simple initialisée comme 1 action
-        super(libelle);
+           super(libelle,annotation);
         // init spécifique
         this.mapCours = new HashMap();
     }

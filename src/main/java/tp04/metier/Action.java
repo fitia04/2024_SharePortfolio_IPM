@@ -12,20 +12,29 @@ import java.util.Objects;
  * @author somebody
  */
 public abstract class Action {
-
-    private String libelle;
+    protected String libelle;
+    protected String annotation;
 
     /**
      * Get the value of libelle
      *
      * @return the value of libelle
      */
+    public String getAnnotation(){
+        return annotation;
+    }
+    
+    public void setAnnotation(String annotation){
+        this.annotation = annotation;
+    }
+    
     public String getLibelle() {
         return libelle;
     }
 
-    public Action(String libelle) {
+    public Action(String libelle, String annotation) {
         this.libelle = libelle;
+        this.annotation = annotation;
     }
 
     public abstract float valeur(Jour j);

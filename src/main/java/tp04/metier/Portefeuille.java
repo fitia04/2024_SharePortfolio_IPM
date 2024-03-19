@@ -5,8 +5,10 @@
  */
 package tp04.metier;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -14,38 +16,27 @@ import java.util.Map;
  */
 public class Portefeuille {
     // dico avec clé : Action, valeur : action,qté
-    Map<Action, LignePortefeuille> mapLignes;
-   
+    Map<Action, LignePortefeuille> mapLignes;   
 
     public class LignePortefeuille {
-
         private Action action;
-
         private int qte;
-
-        public int getQte() {
-            return qte;
-        }
-
-        public void setQte(int qte) {
-            this.qte = qte;
-        }
-
-        public Action getAction() {
-            return this.action;
-        }
+        public int getQte() {return qte;}
+        public void setQte(int qte) {this.qte = qte;}
+        public Action getAction() {return this.action;}
         
         // Constructeur
         public LignePortefeuille(Action action, int qte) {  // Quantité d'une action
             this.action = action;
             this.qte = qte;
         }
-
-        public String toString() {
-            return Integer.toString(qte);
-        }
+        public String toString() {return Integer.toString(qte);}
     }
 
+        
+    public Map<Action,LignePortefeuille> getLignePortefeuille(){
+            return mapLignes;
+        }
     public Portefeuille() {
         this.mapLignes = new HashMap();
     }
@@ -54,10 +45,6 @@ public class Portefeuille {
         return mapLignes;
     }
     
-    
-    
-    
-
     public void acheter(Action a, int q) {
         if (this.mapLignes.containsKey(a) == false) {
             this.mapLignes.put(a, new LignePortefeuille(a, q));
@@ -81,7 +68,29 @@ public class Portefeuille {
             this.mapLignes.remove(a);
         }
     }
+    
+    
+    public ArrayList<ActionSimple> VisualiserActions(HashMap<ActionSimple,Integer> ActionDispo)
+    {
+        ArrayList<ActionSimple> listAction = new ArrayList<ActionSimple>();
+        for(Map.Entry<ActionSimple,Integer> entry : ActionDispo.entrySet()){
+            if(entry.getValue() > 0){
+                listAction.add(entry.getKey());
+            }
+        }
+        return listAction;
+    }        
 
+    public ArrayList<String> visualiserAnnotationPortefeuille(Portefeuille portefeuille)
+    {
+        ArrayList<String> annotations = new ArrayList<String>();
+        Set<Action> cle = portefeuille.getLignePortefeuille().keySet();
+        for(Action c : cle){
+            annotations.add(c.getAnnotation());
+        } 
+        return annotations;
+    }
+    
     public String toString() {
         return this.mapLignes.toString();
     }
@@ -94,4 +103,3 @@ public class Portefeuille {
         return total;
     }
 }
-   
