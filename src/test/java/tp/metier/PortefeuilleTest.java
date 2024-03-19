@@ -148,5 +148,6 @@ public class PortefeuilleTest {
        // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
 
 }
+    
 
 }
