@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 David Navarre &lt;David.Navarre at irit.fr&gt;.
+ * Copyright 2024 Yasmine et Fiita;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import java.util.Objects;
  * <p>
  * Example of usage: <code>Action action = new ConcreteAction("Libelle");</code></p>
  * 
- * @author David Navarre
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
  */
 public abstract class Action {
 

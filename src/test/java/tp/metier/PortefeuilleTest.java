@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 David Navarre &lt;David.Navarre at irit.fr&gt;.
+ * Copyright 2024 Yasmine et Fiita;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.util.Map;
  * <p>
  * Cette classe contient des tests unitaires pour les méthodes de la classe {@link Portefeuille}.</p>
  * 
- * @author David Navarre
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
  */
 public class PortefeuilleTest { 
    

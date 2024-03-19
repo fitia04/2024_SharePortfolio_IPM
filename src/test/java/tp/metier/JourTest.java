@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author David Navarre &lt;David.Navarre at irit.fr&gt;
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An;
  */
 class JourTest {
 
