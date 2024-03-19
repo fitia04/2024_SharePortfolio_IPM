@@ -150,7 +150,9 @@ public class PortefeuilleTest {
       
 }
     
-    
+    /**
+     * Ce test vérifie que la méthode connectToWallet marche bien et si la connection a abouti ou pas. 
+     */
     @Test 
     void testConnectIdMdpSuccess(){
         //Arrange
