@@ -147,7 +147,26 @@ public class PortefeuilleTest {
         //Assert 
        // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
 
+      
 }
     
-
+    /**
+     * Ce test vérifie que la méthode connectToWallet marche bien et si la connection a abouti ou pas. 
+     */
+    @Test 
+    void testConnectIdMdpSuccess(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+        
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Nam An"; 
+        String mdp = "1234";
+       
+        //Action
+       p2.connectToWallet(id, mdp);
+        
+        //Assert
+       Assertions.assertTrue(p2.connectToWallet(id, mdp), "La connexion n'a pas abouti");   
+    }
 }
