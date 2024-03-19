@@ -154,10 +154,17 @@ public class PortefeuilleTest {
     @Test 
     void testConnectIdMdpSuccess(){
         //Arrange
+        Portefeuille p2 = new Portefeuille(); 
         
-        
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Nam An"; 
+        String mdp = "1234";
+       
         //Action
+       p2.connectToWallet(id, mdp);
+        
         //Assert
+       Assertions.assertTrue(p2.connectToWallet(id, mdp), "La connexion n'a pas abouti");   
     }
-
 }
