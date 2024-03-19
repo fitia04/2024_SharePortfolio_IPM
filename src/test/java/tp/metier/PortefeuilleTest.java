@@ -169,4 +169,52 @@ public class PortefeuilleTest {
         //Assert
        Assertions.assertTrue(p2.connectToWallet(id, mdp), "La connexion n'a pas abouti");   
     }
+    
+    /**
+     * Ce test vérifie que la méthode createUser marche bien et refuse d'ajouter un nouveau utilisateur
+     * @author Nam An
+     * @param id, mdp
+     * @return boolean
+     */
+    @Test 
+    void testCreateUserFail(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+        
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Nam An"; 
+        String mdp = "HELLO";
+       
+        //Action
+        boolean result = p2.createUser(id, mdp);
+
+        
+        //Assert
+       Assertions.assertFalse(result, "Compte créé");   
+    }
+    
+    /**
+     * Ce test vérifie que la méthode createUser marche bien et accepte d'ajouter un nouveau utilisateur
+     * @author Nam An
+     * @param id, mdp
+     * @return boolean
+     */
+    @Test 
+    void testCreateUserSuccess(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Larissa"; 
+        String mdp = "HELLO";
+
+        //Action
+        boolean result = p2.createUser(id, mdp);
+
+        //Assert
+        Assertions.assertTrue(result, "Compte pas créé");   
+    }
+
 }
