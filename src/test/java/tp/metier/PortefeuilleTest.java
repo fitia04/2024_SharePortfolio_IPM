@@ -147,6 +147,17 @@ public class PortefeuilleTest {
         //Assert 
        // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
 
+      
 }
+    
+    
+    @Test 
+    void testConnectIdMdpSuccess(){
+        //Arrange
+        
+        
+        //Action
+        //Assert
+    }
 
 }
