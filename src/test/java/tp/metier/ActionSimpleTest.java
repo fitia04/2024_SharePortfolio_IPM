@@ -50,4 +50,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(valeurAttendue, valeurObtenue);  
     }    
     
+    @Test
+     void TestValeurReturnNull(){
+         ActionSimple action1 = new ActionSimple("action1");
+         Jour j = new Jour(2024, 1);
+         
+         Assertions.assertEquals(0.0f, action1.valeur(j));
+     } 
 }
