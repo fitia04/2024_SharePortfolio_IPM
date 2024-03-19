@@ -29,9 +29,19 @@ import java.util.Map;
  * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
  */
 public class Portefeuille {
-    // Dictionary with key: Action, value: action, quantity
+    /**
+     * Dictionary with key: Action, value: action, quantity
+     */
     Map<Action, LignePortefeuille> mapLignes;
-
+    
+    /**
+     *  Dictionnaire  for the identification of a user 
+     */
+    Map<String, String> identification = new HashMap<>();
+    
+    private String user; 
+    private String mdp;
+        
     /**
      * Represents a line in the portfolio.
      * <p>
@@ -90,6 +100,16 @@ public class Portefeuille {
      */
     public Portefeuille() {
         this.mapLignes = new HashMap();
+    }
+    
+    /**
+     * 
+     * @param user
+     * @param mdp 
+     */
+    public Portefeuille(String user, String mdp){
+        this.user = user; 
+        this.mdp =  mdp ;
     }
 
     /**
@@ -176,4 +196,34 @@ public class Portefeuille {
         }
         return null;
     }
+    
+    /**
+     * The fonction to help ther user to connect to his wallet 
+     * @param id
+     * @param mdp 
+     */
+    public boolean connectToWallet (String id, String mdp) {
+        // Vérifie si le nom d'utilisateur existe dans le dictionnaire
+        if (identification.containsKey(id)) {
+            // Vérifie si le mot de passe correspond au nom d'utilisateur
+            if (identification.get(id).equals(mdp)){
+               
+                System.out.println("La connection s'est bien passée");
+                return true; 
+            }
+            else {
+                System.out.println("Le mot de passe est incorrecte");
+                return false;
+            }
+                
+        }
+        else{
+            System.out.println("Cet identifiant n'existe pas");
+            return false; 
+        }
+    }
+
+
+            
+ 
 }
