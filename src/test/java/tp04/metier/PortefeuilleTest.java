@@ -1,6 +1,6 @@
 
 /*
- * Copyright 2024 33761.
+ * Copyright 2024 Noé, Alexandre, Fitia, yasmine.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +61,11 @@ public class PortefeuilleTest {
         Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
     }
   
+     /**
+     * Test de la méthode {@link Portefeuille#vendrePartiel(Action, int)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille non vide.</p>
+     */
     @Test
     protected void testVendrePartiel() {
         //Arrange
@@ -80,6 +85,12 @@ public class PortefeuilleTest {
         Assertions.assertEquals(quantiteInitiale - quantite, lignePortefeuille.getQte());
         
     }
+    
+         /**
+     * Test de la méthode {@link Portefeuille#vendrePartiel(Action, int)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille vide.</p>
+     */
         @Test
         protected void testVendreTotal() {
         //Arrange
@@ -120,6 +131,11 @@ public class PortefeuilleTest {
         Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
     }
 
+    /**
+     * Test de la méthode {@link Portefeuille#visualiserActions(HashMap<ActionSimple,Integer> ActionDispo)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#visualiserActions(HashMap<ActionSimple,Integer> ActionDispo)} permette une visualisation correcte des actions dun portefeuille</p>
+     */
     @Test
     protected void testVisualiserActions(){
         
@@ -141,14 +157,19 @@ public class PortefeuilleTest {
         listActionTest.add(action3);
         
         //Action
-        ArrayList<ActionSimple> result = portefeuille1.VisualiserActions(maMap);
+        ArrayList<ActionSimple> result = portefeuille1.visualiserActions(maMap);
         
         //Assert
         Assertions.assertEquals(listActionTest,result);
         }
     
+     /**
+     * Test de la méthode {@link Portefeuille#visualiserAnnotationPortefeuille(Portefeuille portefeuille)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#visualiserAnnotationPortefeuille(Portefeuille portefeuille)} permette une visualisation des annotations de toutes les actions du portefeuille</p>
+     */
     @Test
-    protected void visualiserAnnotationPortefeuille(){
+    protected void testVisualiserAnnotationPortefeuille(){
         //Arrange
         ActionSimple action1 = new ActionSimple("act1","annot1");
         ActionSimple action2 = new ActionSimple("act2","annot2");
