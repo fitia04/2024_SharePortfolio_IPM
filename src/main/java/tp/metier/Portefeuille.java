@@ -105,16 +105,8 @@ public class Portefeuille {
         this.mapLignes = new HashMap();
     }
     
-    /**
-     * 
-     * @param user
-     * @param mdp 
-     */
-    public Portefeuille(String user, String mdp){
-        this.user = user; 
-        this.mdp =  mdp ;
-    }
-
+    
+   
     /**
      * Gets the map of portfolio lines.
      * 
@@ -238,8 +230,9 @@ public class Portefeuille {
     
     /**
      * The fonction to help ther user to connect to his wallet 
-     * @param id
-     * @param mdp 
+     * @param id the identification of the user 
+     * @param mdp the password
+     * @return true if user found, false if not
      */
     public boolean connectToWallet (String id, String mdp) {
         // Vérifie si le nom d'utilisateur existe dans le dictionnaire
@@ -261,8 +254,25 @@ public class Portefeuille {
             return false; 
         }
     }
-
-
+    
+    /**
+     * This function allows user to create their own id and password for their wallet
+     * @param id the identification of the user 
+     * @param mdp the password
+     * @return true if user created, false if not
+     */
+    public boolean createUser(String id, String mdp) {
+      if (!identification.containsKey(id)) {
+          identification.put(id, mdp);
+          this.user = id;
+          this.mdp = mdp;
+          System.out.println("Le compte a été créé");
+          return true;
+      } else {
+          System.out.println("Cet UserName est déjà utilisé.");
+          return false;
+      }
+    }
 
             
  

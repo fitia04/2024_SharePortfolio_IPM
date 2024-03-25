@@ -43,6 +43,7 @@ public abstract class Action {
      * Constructs an Action with the given label.
      * 
      * @param libelle The label representing this action.
+     * @param annotation the description of the action
      */
     public Action(String libelle,String annotation) {
         this.libelle = libelle;

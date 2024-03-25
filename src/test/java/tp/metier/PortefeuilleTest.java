@@ -244,7 +244,7 @@ public class PortefeuilleTest {
      * Ce test vérifie que la méthode connectToWallet marche bien et si la connection a abouti ou pas. 
      */
     @Test 
-    void testConnectIdMdpSuccess(){
+    void testConnectWalletIdMdpSuccess(){
         //Arrange
         Portefeuille p2 = new Portefeuille(); 
         
@@ -259,4 +259,93 @@ public class PortefeuilleTest {
         //Assert
        Assertions.assertTrue(p2.connectToWallet(id, mdp), "La connexion n'a pas abouti");   
     }
+    
+    /**
+     * Ce test vérifie que la méthode connectToWallet marche bien et si si le MDP est incrorrect. 
+     */
+    @Test 
+    void testConnectWalletIdMdpFailMdp(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+        
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Nam An"; 
+        String mdp = "AXY";
+       
+        //Action
+       p2.connectToWallet(id, mdp);
+        
+        //Assert
+       Assertions.assertFalse(p2.connectToWallet(id, mdp), "Le mdp est correcte");   
+    }
+    
+    /**
+     * Ce test vérifie que la méthode connectToWallet marche bien et si l'ID est incrorrect  
+     */
+    @Test 
+    void testConnectWalletIdMdpFailId(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+        
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Nam"; 
+        String mdp = "1234";
+       
+        //Action
+       p2.connectToWallet(id, mdp);
+        
+        //Assert
+       Assertions.assertFalse(p2.connectToWallet(id, mdp), "L'ID est correct");   
+    }
+    
+    /**
+     * Ce test vérifie que la méthode createUser marche bien et refuse d'ajouter un nouveau utilisateur
+     * @author Nam An
+     * @param id, mdp
+     * @return boolean
+     */
+    @Test 
+    void testCreateUserFail(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+        
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Nam An"; 
+        String mdp = "HELLO";
+       
+        //Action
+        boolean result = p2.createUser(id, mdp);
+
+        
+        //Assert
+       Assertions.assertFalse(result, "Compte créé");   
+    }
+    
+    /**
+     * Ce test vérifie que la méthode createUser marche bien et accepte d'ajouter un nouveau utilisateur
+     * @author Nam An
+     * @param id, mdp
+     * @return boolean
+     */
+    @Test 
+    void testCreateUserSuccess(){
+        //Arrange
+        Portefeuille p2 = new Portefeuille(); 
+
+        p2.identification.put("Nam An", "1234"); 
+        p2.identification.put("Dem", "mdp"); 
+        String id = "Larissa"; 
+        String mdp = "HELLO";
+
+        //Action
+        boolean result = p2.createUser(id, mdp);
+
+        //Assert
+        Assertions.assertTrue(result, "Compte pas créé");   
+    }
+    
+   
 }
