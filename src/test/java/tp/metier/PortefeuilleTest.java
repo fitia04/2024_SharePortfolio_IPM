@@ -1,6 +1,5 @@
-
 /*
- * Copyright 2024 Noé, Alexandre, Fitia, yasmine.
+ * Copyright 2024 Yasmine et Fiita;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package tp04.metier;
+package tp.metier;
 
-import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
+/**
+ * Classe de test pour la classe {@link Portefeuille}.
+ * <p>
+ * Cette classe contient des tests unitaires pour les méthodes de la classe {@link Portefeuille}.</p>
+ * 
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
+ */
 public class PortefeuilleTest { 
    
+    /**
+     * Test de la méthode {@link Portefeuille#acheter(Action, int)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#acheter(Action, int)} ajoute correctement une action au portefeuille.</p>
+     */
     @Test
     public void testAcheter() {
-    
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
         ActionSimple actionSimple = new ActionSimple("Action1","annot1");
@@ -43,11 +52,17 @@ public class PortefeuilleTest {
        Assertions.assertTrue(mapLignes.containsKey(actionSimple));
     }
     
+    /**
+     * Test de la quantité après l'achat.
+     * <p>
+     * Ce test vérifie que la quantité d'une action dans le portefeuille est correcte
+     * après l'achat de quantités supplémentaires.</p>
+     */
     @Test
-    public void testQuantiteAchete() {
-      //Arrange
+    void testQuantiteAchete() {
+        //Arrange
         Portefeuille portefeuille = new Portefeuille();
-        ActionSimple actionSimple = new ActionSimple("Action1","Annot1");
+        ActionSimple actionSimple = new ActionSimple("Action1","annotation1");
         int quantiteInitiale = 10;
         int quantiteAchat = 50;
         
@@ -61,7 +76,7 @@ public class PortefeuilleTest {
         Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
     }
   
-     /**
+  /**
      * Test de la méthode {@link Portefeuille#vendrePartiel(Action, int)}.
      * <p>
      * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille non vide.</p>
@@ -78,8 +93,8 @@ public class PortefeuilleTest {
         int quantite = 50;
         portefeuille.vendre(action, quantite);
         
-        //Assert
-        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        //Asserts
+        Map<Action,Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
         Assertions.assertTrue(mapLignes.containsKey(action));
         Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(action);
         Assertions.assertEquals(quantiteInitiale - quantite, lignePortefeuille.getQte());
@@ -104,13 +119,19 @@ public class PortefeuilleTest {
         portefeuille.vendre(action, quantite);
         
         //Assert
-        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        Map<Action,Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
         Assertions.assertFalse(mapLignes.containsKey(action));
         
     }
+
     
+    /**
+     * Test de la suppression réussie d'une action du portefeuille.
+     * <p>
+     * Ce test vérifie qu'une action est supprimée avec succès du portefeuille.</p>
+     */
     @Test
-    protected void testDeleteSuccess() {
+    void testDeleteSuccess() {
         // Arrange
         Portefeuille portefeuille = new Portefeuille();
         String libelle = "Action1";
@@ -129,8 +150,10 @@ public class PortefeuilleTest {
         // Assert
         Assertions.assertFalse(portefeuille.getMapLignes().containsKey(AC1), "Test echec");
         Assertions.assertTrue(portefeuille.getMapLignes().containsKey(AS1), "Test echec");   
+       
     }
-
+    
+    
     /**
      * Test de la méthode {@link Portefeuille#visualiserActions(HashMap<ActionSimple,Integer> ActionDispo)}.
      * <p>
@@ -188,5 +211,32 @@ public class PortefeuilleTest {
 
         //Assert
         Assertions.assertEquals(listAnnotations,result);
-        }   
-    }
+        }
+    
+    /**
+     * Test de recherche d'action.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#rechercherActionParNom(String)} recherche correctement une action dans le portefeuille.</p>
+     */
+    @Test
+    void testResearch(){
+        //Arrange 
+        Portefeuille portefeuille = new Portefeuille();
+        String libelle = "Action1";
+        String lib = "Action2";
+        String annotation = "annotation1";
+        String annot = "annotation2";
+        ActionSimple AS1 = new ActionSimple(libelle,annotation);
+        ActionComposee AC1 = new ActionComposee(lib,annot);
+        int quantiteInitiale = 100;
+        portefeuille.acheter(AC1, quantiteInitiale);
+        portefeuille.acheter(AS1, quantiteInitiale);
+
+        //Action 
+        portefeuille.rechercherActionParNom("Action1"); 
+        //Assert 
+       // Assertions.assert(portefeuille.rechercherActionParNom("Action1"), "Test echec");
+
+}
+
+}

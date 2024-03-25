@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 David Navarre &lt;David.Navarre at irit.fr&gt;.
+ * Copyright 2024 Yasmine et Fitia;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package tp04.metier;
+package tp.metier;
 
 /**
  * This class aims at storing a value (of an action) for a given day.
  * <p>
  * Example of usage: <code>Cours c = new Cours(j, 2.3F);</code></p>
  *
- * @author SomeFirstName SomeName &lt;SomeFirstName.SomeName at truc.fr&gt;
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An
  * @see Action
  * @see Jour
  */

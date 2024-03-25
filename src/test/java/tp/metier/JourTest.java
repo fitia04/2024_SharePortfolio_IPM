@@ -13,27 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package tp04.metier;
+package tp.metier;
 
+import tp.metier.Jour;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author David Navarre &lt;David.Navarre at irit.fr&gt;
+ * @author Noe, Alexandre, Yasmine, Fitia, Larissa, Tidiane, Nam An;
  */
-public class JourTest {
+class JourTest {
 
     private static final int DEFAULT_DAY = 1;
     private static final int DEFAULT_YEAR = 1;
     private static final int INCORRECT_DAY = 0;
     private static final int INCORRECT_YEAR = 0;
 
-    public JourTest() {
+    JourTest() {
     }
 
     @Test
-    protected void testConstructorParametersAreCorrectSuccess() {
+    void testConstructorParametersAreCorrectSuccess() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
 
@@ -46,7 +47,7 @@ public class JourTest {
     }
 
    // @Test
-    protected void testConstructorDayIncorrectShouldFail() {
+    void testConstructorDayIncorrectShouldFail() {
         //Arrange
         final String expectedMessage = "0 must not be used as a valid Day";
         //Action and asserts
