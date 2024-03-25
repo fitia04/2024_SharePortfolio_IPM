@@ -17,6 +17,9 @@ package tp.metier;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Set;
+
 
 /**
  * Represents a financial portfolio.
@@ -161,6 +164,42 @@ public class Portefeuille {
             this.mapLignes.remove(a);
         }
     }
+    
+    /**
+ * Méthode permettant de visualiser les actions disponibles dans un portefeuille,
+ * c'est-à-dire les actions dont la quantité disponible est supérieure à zéro.
+ *
+ * @param ActionDispo Une HashMap contenant des objets ActionSimple en tant que clés
+ *                    et des entiers représentant les quantités disponibles en tant que valeurs.
+ * @return Une ArrayList d'objets ActionSimple représentant les actions disponibles.
+ */
+    public ArrayList<ActionSimple> visualiserActions(HashMap<ActionSimple,Integer> ActionDispo)
+    {
+        ArrayList<ActionSimple> listAction = new ArrayList<ActionSimple>();
+        for(Map.Entry<ActionSimple,Integer> entry : ActionDispo.entrySet()){
+            if(entry.getValue() > 0){
+                listAction.add(entry.getKey());
+            }
+        }
+        return listAction;
+    }        
+
+       /**
+ * Méthode permettant de visualiser les annotations des actions présentes dans le portefeuille
+ *
+ * @param On passe en paramètre un portefeuille
+ * @return Une ArrayList contenant les annotations des différentes actions du portefeuille
+ */
+    public ArrayList<String> visualiserAnnotationPortefeuille(Portefeuille portefeuille)
+    {
+        ArrayList<String> annotations = new ArrayList<String>();
+        Set<Action> cle = portefeuille.getMapLignes().keySet();
+        for(Action c : cle){
+            annotations.add(c.getAnnotation());
+        } 
+        return annotations;
+    }
+
 
     @Override
     public String toString() {

@@ -32,15 +32,21 @@ public abstract class Action {
     /**
      * The label representing this action.
      */
-    private String libelle;
+    protected String libelle;
+    
+    /**
+     * The annotation give information about this action
+     */
+    protected String annotation;
 
     /**
      * Constructs an Action with the given label.
      * 
      * @param libelle The label representing this action.
      */
-    public Action(String libelle) {
+    public Action(String libelle,String annotation) {
         this.libelle = libelle;
+        this.annotation = annotation;
     }
 
     /**
@@ -50,6 +56,13 @@ public abstract class Action {
      */
     public String getLibelle() {
         return libelle;
+    }
+    
+    /**
+     * @return the annotation of this action
+     */
+    public String getAnnotation(){
+        return annotation;
     }
 
     /**

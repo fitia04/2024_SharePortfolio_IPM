@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     @Test
     void testValeur() {
     // Arrange
-        ActionSimple actionSimple = new ActionSimple("ActionS");
+        ActionSimple actionSimple = new ActionSimple("ActionS","AnnotationS");
         Jour jour = new Jour(2024, 3);
         
         // Action : Enregistrement du cours de l'action pour la journée donnée

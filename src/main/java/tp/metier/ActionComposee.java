@@ -40,8 +40,8 @@ public class ActionComposee extends Action {
      * 
      * @param libelle The label representing this composite action.
      */
-    public ActionComposee(String libelle) {
-        super(libelle);
+    public ActionComposee(String libelle,String annotation) {
+        super(libelle,annotation);
         this.mapPanier = new HashMap();
     }
 
