@@ -25,10 +25,10 @@ public class ActionTest {
     @Test
     public void testActionEquals(){
         //Arrange
-        ActionSimple action1 = new ActionSimple("action1");
-        ActionSimple action1bis = new ActionSimple("action1");
-        ActionSimple action2 = new ActionSimple("action2");
-        ActionComposee actionComposee1 = new ActionComposee("action3");
+        ActionSimple action1 = new ActionSimple("action1", "annotation1");
+        ActionSimple action1bis = new ActionSimple("action1", "annotation1bis");
+        ActionSimple action2 = new ActionSimple("action2", "annotation2");
+        ActionComposee actionComposee1 = new ActionComposee("action3", "annotation3");
         
         //Assert
         Assertions.assertFalse(action1.equals(action2));
@@ -40,7 +40,7 @@ public class ActionTest {
     
     @Test
     public void testActionToString(){
-        ActionSimple action1 = new ActionSimple("action1");
+        ActionSimple action1 = new ActionSimple("action1", "annotation1");
         String actionLibelle = "action1";
         
         Assertions.assertEquals(action1.toString(), actionLibelle);
