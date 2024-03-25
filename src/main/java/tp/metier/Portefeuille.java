@@ -230,8 +230,9 @@ public class Portefeuille {
     
     /**
      * The fonction to help ther user to connect to his wallet 
-     * @param id
-     * @param mdp 
+     * @param id the identification of the user 
+     * @param mdp the password
+     * @return true if user found, false if not
      */
     public boolean connectToWallet (String id, String mdp) {
         // Vérifie si le nom d'utilisateur existe dans le dictionnaire
@@ -256,8 +257,8 @@ public class Portefeuille {
     
     /**
      * This function allows user to create their own id and password for their wallet
-     * @param id
-     * @param mdp
+     * @param id the identification of the user 
+     * @param mdp the password
      * @return true if user created, false if not
      */
     public boolean createUser(String id, String mdp) {
