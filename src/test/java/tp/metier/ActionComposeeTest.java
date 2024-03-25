@@ -29,9 +29,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     @Test
     public void testValeur() {
     //Arrange
-    ActionComposee actionComposee = new ActionComposee("ActionC");
-    ActionSimple actionSimple1 = new ActionSimple("ActionS1");
-    ActionSimple actionSimple2 = new ActionSimple("ActionS2");
+    ActionComposee actionComposee = new ActionComposee("ActionC","AnnotationC");
+    ActionSimple actionSimple1 = new ActionSimple("ActionS1","Annotation1");
+    ActionSimple actionSimple2 = new ActionSimple("ActionS2","Annotation2");
     Jour jour = new Jour(2024, 3);
     
      //Action

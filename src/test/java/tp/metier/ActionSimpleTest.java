@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     @Test
     void testValeur() {
     // Arrange
-        ActionSimple actionSimple = new ActionSimple("ActionS");
+        ActionSimple actionSimple = new ActionSimple("ActionS","AnnotationS");
         Jour jour = new Jour(2024, 3);
         
         // Action : Enregistrement du cours de l'action pour la journée donnée
@@ -50,4 +50,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(valeurAttendue, valeurObtenue);  
     }    
     
+    @Test
+     void TestValeurReturnNull(){
+         ActionSimple action1 = new ActionSimple("action1", "annotation1");
+         Jour j = new Jour(2024, 1);
+         
+         Assertions.assertEquals(0.0f, action1.valeur(j));
+     } 
 }

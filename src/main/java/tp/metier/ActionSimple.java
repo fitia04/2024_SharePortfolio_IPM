@@ -39,8 +39,8 @@ public class ActionSimple extends Action {
      * 
      * @param libelle The label representing this simple action.
      */
-    public ActionSimple(String libelle) {
-        super(libelle);
+    public ActionSimple(String libelle,String annotation) {
+        super(libelle,annotation);
         this.mapCours = new HashMap();
     }
     

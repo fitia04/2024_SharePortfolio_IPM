@@ -58,4 +58,42 @@ class JourTest {
         Assertions.assertEquals(expectedMessage, currentMessage, "Expected error message");
 
     }
+    
+     @Test
+     void testGetAnneeAndNoJour() {
+        // Arrange
+        int anneeAttendue = 2024;
+        int noJourAttendu = 79;
+        Jour jour = new Jour(anneeAttendue, noJourAttendu);
+
+        // Action
+        int annee = jour.getAnnee();
+        int noJour = jour.getNoJour();
+
+        // Assert
+        Assertions.assertEquals(anneeAttendue, annee);
+        Assertions.assertEquals(noJourAttendu, noJour);
+    }
+    
+     @Test
+     void testEquals() {  
+        // Cas de base : les deux jours sont identiques
+        Jour jour1 = new Jour(2024, 79);
+        Jour jour2 = new Jour(2024, 79);
+        
+        //Assertions
+        Assertions.assertTrue(jour1.equals(jour2));
+        Assertions.assertTrue(jour1.equals(jour1));
+        Assertions.assertFalse(jour1.equals(null));
+        Assertions.assertFalse(jour1.equals("2024-79"));
+
+        // Cas où l'année est différente
+        Jour jour3 = new Jour(2023, 79);
+        Assertions.assertFalse(jour1.equals(jour3));
+
+        // Cas où le numéro de jour est différent
+        Jour jour4 = new Jour(2024, 80);
+        Assertions.assertFalse(jour1.equals(jour4));
+    }
+    
 }

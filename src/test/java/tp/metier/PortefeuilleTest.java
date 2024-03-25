@@ -15,6 +15,8 @@
  */
 package tp.metier;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Map;
@@ -37,7 +39,7 @@ public class PortefeuilleTest {
     public void testAcheter() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
-        ActionSimple actionSimple = new ActionSimple("Action1");
+        ActionSimple actionSimple = new ActionSimple("Action1","annot1");
         int quantiteInitiale = 10;
         int quantiteAchat = 50;
         
@@ -60,7 +62,7 @@ public class PortefeuilleTest {
     void testQuantiteAchete() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
-        ActionSimple actionSimple = new ActionSimple("Action1");
+        ActionSimple actionSimple = new ActionSimple("Action1","annotation1");
         int quantiteInitiale = 10;
         int quantiteAchat = 50;
         
@@ -74,16 +76,16 @@ public class PortefeuilleTest {
         Assertions.assertEquals(quantiteInitiale + quantiteAchat, lignePortefeuille.getQte());
     }
   
-    /**
-     * Test de la méthode {@link Portefeuille#vendre(Action, int)}.
+  /**
+     * Test de la méthode {@link Portefeuille#vendrePartiel(Action, int)}.
      * <p>
-     * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille.</p>
+     * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille non vide.</p>
      */
     @Test
-    void testVendre() {
+    protected void testVendrePartiel() {
         //Arrange
         Portefeuille portefeuille = new Portefeuille();
-        ActionSimple action = new ActionSimple("Action1");
+        ActionSimple action = new ActionSimple("Action1","Annot1");
         int quantiteInitiale = 100;
         
         portefeuille.acheter(action, quantiteInitiale);
@@ -91,13 +93,37 @@ public class PortefeuilleTest {
         int quantite = 50;
         portefeuille.vendre(action, quantite);
         
-        //Assert
-        Map<Action, Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        //Asserts
+        Map<Action,Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
         Assertions.assertTrue(mapLignes.containsKey(action));
         Portefeuille.LignePortefeuille lignePortefeuille = mapLignes.get(action);
         Assertions.assertEquals(quantiteInitiale - quantite, lignePortefeuille.getQte());
         
     }
+    
+         /**
+     * Test de la méthode {@link Portefeuille#vendrePartiel(Action, int)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#vendre(Action, int)} soustrait correctement des quantités d'une action du portefeuille vide.</p>
+     */
+        @Test
+        protected void testVendreTotal() {
+        //Arrange
+        Portefeuille portefeuille = new Portefeuille();
+        ActionSimple action = new ActionSimple("Action1","Annot1");
+        int quantiteInitiale = 100;
+        
+        portefeuille.acheter(action, quantiteInitiale);
+        //Action
+        int quantite = 100;
+        portefeuille.vendre(action, quantite);
+        
+        //Assert
+        Map<Action,Portefeuille.LignePortefeuille> mapLignes = portefeuille.mapLignes;
+        Assertions.assertFalse(mapLignes.containsKey(action));
+        
+    }
+
     
     /**
      * Test de la suppression réussie d'une action du portefeuille.
@@ -110,8 +136,10 @@ public class PortefeuilleTest {
         Portefeuille portefeuille = new Portefeuille();
         String libelle = "Action1";
         String lib = "Action2";
-        ActionSimple AS1 = new ActionSimple(libelle);
-        ActionComposee AC1 = new ActionComposee(lib);
+        String annotation = "Annotation1";
+        String annot = "Annotation2";
+        ActionSimple AS1 = new ActionSimple(libelle,annotation);
+        ActionComposee AC1 = new ActionComposee(lib,annot);
         int quantiteInitiale = 100;
         portefeuille.acheter(AC1, quantiteInitiale);
         portefeuille.acheter(AS1, quantiteInitiale);
@@ -125,6 +153,66 @@ public class PortefeuilleTest {
        
     }
     
+    
+    /**
+     * Test de la méthode {@link Portefeuille#visualiserActions(HashMap<ActionSimple,Integer> ActionDispo)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#visualiserActions(HashMap<ActionSimple,Integer> ActionDispo)} permette une visualisation correcte des actions dun portefeuille</p>
+     */
+    @Test
+    protected void testVisualiserActions(){
+        
+        //Arrange
+        Portefeuille portefeuille1 = new Portefeuille();
+        
+        ActionSimple action1 = new ActionSimple("act1","annot1");
+        ActionSimple action2 = new ActionSimple("act2","annot2");
+        ActionSimple action3 = new ActionSimple("act3","annot3");
+            
+        HashMap<ActionSimple, Integer> maMap = new HashMap<>();
+        maMap.put(action1, 10);
+        maMap.put(action2, 30);
+        maMap.put(action3, 40);
+            
+        ArrayList<ActionSimple> listActionTest = new ArrayList<ActionSimple>();
+        listActionTest.add(action2);
+        listActionTest.add(action1);
+        listActionTest.add(action3);
+        
+        //Action
+        ArrayList<ActionSimple> result = portefeuille1.visualiserActions(maMap);
+        
+        //Assert
+        Assertions.assertEquals(listActionTest,result);
+        }
+    
+     /**
+     * Test de la méthode {@link Portefeuille#visualiserAnnotationPortefeuille(Portefeuille portefeuille)}.
+     * <p>
+     * Ce test vérifie que la méthode {@link Portefeuille#visualiserAnnotationPortefeuille(Portefeuille portefeuille)} permette une visualisation des annotations de toutes les actions du portefeuille</p>
+     */
+    @Test
+    protected void testVisualiserAnnotationPortefeuille(){
+        //Arrange
+        ActionSimple action1 = new ActionSimple("act1","annot1");
+        ActionSimple action2 = new ActionSimple("act2","annot2");
+        
+        ArrayList<String> listAnnotations = new ArrayList<String>();
+        listAnnotations.add(action2.getAnnotation());
+        listAnnotations.add(action1.getAnnotation());
+
+        
+        Portefeuille portefeuille1 = new Portefeuille();
+        portefeuille1.acheter(action2, 10);
+        portefeuille1.acheter(action1, 30);
+        
+        //Action
+        ArrayList<String> result = portefeuille1.visualiserAnnotationPortefeuille(portefeuille1); 
+
+        //Assert
+        Assertions.assertEquals(listAnnotations,result);
+        }
+    
     /**
      * Test de recherche d'action.
      * <p>
@@ -136,8 +224,10 @@ public class PortefeuilleTest {
         Portefeuille portefeuille = new Portefeuille();
         String libelle = "Action1";
         String lib = "Action2";
-        ActionSimple AS1 = new ActionSimple(libelle);
-        ActionComposee AC1 = new ActionComposee(lib);
+        String annotation = "annotation1";
+        String annot = "annotation2";
+        ActionSimple AS1 = new ActionSimple(libelle,annotation);
+        ActionComposee AC1 = new ActionComposee(lib,annot);
         int quantiteInitiale = 100;
         portefeuille.acheter(AC1, quantiteInitiale);
         portefeuille.acheter(AS1, quantiteInitiale);
