@@ -102,15 +102,8 @@ public class Portefeuille {
         this.mapLignes = new HashMap();
     }
     
-    /**
-     * 
-     * @param user
-     * @param mdp 
-     */
-    public Portefeuille(String user, String mdp){
-        createUser(user,mdp);
-    }
-
+    
+   
     /**
      * Gets the map of portfolio lines.
      * 
